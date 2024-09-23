@@ -14,4 +14,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PatiVerCore.Application\PatiVerCore.Application.csproj" />
+    <ProjectReference Include="..\PatiVerCore.Infrastructure\PatiVerCore.Infrastructure.csproj" />
+    <ProjectReference Include="..\PatiVerCore.Persistence\PatiVerCore.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

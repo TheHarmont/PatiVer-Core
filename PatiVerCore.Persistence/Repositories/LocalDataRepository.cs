@@ -11,7 +11,7 @@ namespace PatiVerCore.Persistence.Repositories
 {
     public class LocalDataRepository(AppDBContext db) : ILocalDataRepository
     {
-        public async Task<Result<LocalData>> GetLocalDataByFioAsync(PersonFIO personData)
+        public async Task<Result<LocalData>> GetDataByFioAsync(PersonFIO personData)
         {
             try
             {

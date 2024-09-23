@@ -21,7 +21,7 @@ namespace PatiVerCore.Application.Interfaces.Repositories
         /// <returns>
         /// 
         /// </returns>
-        public Task<Result<LocalData>> GetLocalDataByFioAsync(PersonFIO data);
+        public Task<Result<LocalData>> GetDataByFioAsync(PersonFIO data);
 
         /// <summary>
         /// Возвращает данные пациента из БД, отфильтрованные по входным данным.

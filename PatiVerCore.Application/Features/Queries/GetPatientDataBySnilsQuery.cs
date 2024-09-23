@@ -11,10 +11,10 @@ namespace PatiVerCore.Application.Features.Queries
 {
     public class GetPatientDataBySnilsQuery : IRequest<PersonResponse>
     {
-        public PersonFIO PersonFio { get; set; }
-        public GetPatientDataBySnilsQuery(PersonFIO personFio)
+        public PersonSnils PersonSnils { get; set; }
+        public GetPatientDataBySnilsQuery(PersonSnils personSnils)
         {
-            personFio = personFio;
+            PersonSnils = personSnils;
         }
     }
 

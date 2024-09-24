@@ -31,7 +31,7 @@ namespace PatiVerCore.Domain.Common
         /// <summary>
         /// 
         /// </summary>
-        public int? MIS { get; set; }
+        public int MIS { get; set; }
 
         public BaseRequestEnity(string moId, string username, string password, bool isIPRAfirst, int mis)
         {

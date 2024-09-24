@@ -1,6 +1,6 @@
 ﻿using MediatR;
+using PatiVerCore.Application.DTOs;
 using PatiVerCore.Domain.Entities.Request;
-using PatiVerCore.Domain.Entities.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;

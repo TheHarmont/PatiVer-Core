@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PatiVerCore.Domain.Entities.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PatiVerCore.Domain.Entities.Response
+namespace PatiVerCore.Application.DTOs
 {
     [Serializable]
     //[DataContract(Namespace = Constants.Namespace)]
@@ -40,7 +41,7 @@ namespace PatiVerCore.Domain.Entities.Response
         }
 
 
-        public Address(Foms.PersonAddress data)
+        public Address(PersonAddress data)
         {
             Kladr = data.Address;
             Region = data.Region;
@@ -52,7 +53,7 @@ namespace PatiVerCore.Domain.Entities.Response
             Flat = data.Flat;
         }
 
-        static public Address FromFomsData(Foms.PersonAddress data)
+        static public Address FromFomsData(PersonAddress data)
         {
             return null == data ? null : new Address(data);
         }

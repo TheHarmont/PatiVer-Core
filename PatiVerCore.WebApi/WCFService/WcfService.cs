@@ -1,7 +1,7 @@
 ﻿using MediatR;
+using PatiVerCore.Application.DTOs;
 using PatiVerCore.Application.Features.Queries.QueryByFio;
 using PatiVerCore.Domain.Entities.Request;
-using PatiVerCore.Domain.Entities.Response;
 
 namespace PatiVerCore.WebApi.WCFService
 {

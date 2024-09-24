@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace PatiVerCore.Domain.Common.Result
 {
-    public enum ResultType
+    public enum ErrorType
     {
-        Ok = 0,
-        NotFound = 1,
-        MultipleFound = 2,
-        Unexpected = 3,
-        Invalid = 4
+        NotFound = 0,
+        MultipleFound = 1,
+        Unexpected = 2,
+        Invalid = 3
     }
 }

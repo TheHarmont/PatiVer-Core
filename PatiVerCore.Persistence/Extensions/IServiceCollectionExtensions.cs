@@ -28,8 +28,9 @@ namespace PatiVerCore.Persistence.Extensions
 
         private static void AddRepositories(this IServiceCollection services)
         {
-            services.
-                AddScoped<ILocalDataRepository, LocalDataRepository>();
+            services
+                .AddScoped<ILocalDataRepository, LocalDataRepository>()
+                .AddScoped<IFomsDataRepository, FomsDataRepository>();
         }
     }
 }

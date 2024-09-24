@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PatiVerCore.Domain.Entities.Response //Установил такое ПИ, чтобы обеспечить гладкий переход со старого PatiVer
+namespace PatiVerCore.Application.DTOs //Установил такое ПИ, чтобы обеспечить гладкий переход со старого PatiVer
 {
     [Serializable]
     //[DataContract(Namespace = Constants.Namespace)]

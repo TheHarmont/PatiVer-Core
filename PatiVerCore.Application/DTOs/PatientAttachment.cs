@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PatiVerCore.Domain.Entities.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PatiVerCore.Domain.Entities.Response
+namespace PatiVerCore.Application.DTOs
 {
     [Serializable]
     public class PatientAttachment
@@ -45,7 +46,7 @@ namespace PatiVerCore.Domain.Entities.Response
         {
         }
 
-        public PatientAttachment(Foms.AttachmentData data)
+        public PatientAttachment(AttachmentData data)
         {
             CodeMO = data.CodeMO;
             Sector = data.Region;
@@ -64,7 +65,7 @@ namespace PatiVerCore.Domain.Entities.Response
                 EndDate = date;
         }
 
-        static public PatientAttachment FromFomsData(Foms.AttachmentData data)
+        static public PatientAttachment FromFomsData(AttachmentData data)
         {
             return null == data ? null : new PatientAttachment(data);
         }

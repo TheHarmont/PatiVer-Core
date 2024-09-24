@@ -38,7 +38,8 @@ namespace PatiVerCore.Infrastructure.Extensions
         private static void AddServices(this IServiceCollection services)
         {
             services
-                .AddTransient<ICacheService, CacheService>();
+                .AddTransient<ICacheService, CacheService>()
+                .AddTransient<IFomsService, FomsService>();
         }
     }
 }

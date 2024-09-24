@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PatiVerCore.Application\PatiVerCore.Application.csproj" />
+    <ProjectReference Include="..\PatiVerCore.Domain\PatiVerCore.Domain.csproj" />
   </ItemGroup>
 
 </Project>

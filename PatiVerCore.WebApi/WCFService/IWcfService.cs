@@ -1,5 +1,5 @@
 ﻿using CoreWCF;
-using PatiVerCore.Domain.Entities.Response;
+using PatiVerCore.Application.DTOs;
 
 namespace PatiVerCore.WebApi.WCFService
 {

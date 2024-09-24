@@ -1,7 +1,8 @@
 ﻿using MediatR;
+using PatiVerCore.Application.DTOs;
 using PatiVerCore.Application.Interfaces.Repositories;
+using PatiVerCore.Domain.Common.Result;
 using PatiVerCore.Domain.Entities.Request;
-using PatiVerCore.Domain.Entities.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,18 @@ namespace PatiVerCore.Application.Features.Queries
         {
             try
             {
-                await localDataRepository.GetDataByFioAsync(query.PersonFio);
+                var sd = await localDataRepository.GetDataByFioAsync(query.PersonFio);
+                switch (sd.ErrorType)
+                {
+                    case ErrorType.Ok:
+                        break;
+                    case ErrorType.Invalid:
+                        break;
+                    case ErrorType.Unexpected:
+                        break;
+                    default:
+                        return new UnexpectedResult<>
+                }
             }
             catch (Exception)
             {

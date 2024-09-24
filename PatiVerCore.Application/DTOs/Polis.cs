@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PatiVerCore.Domain.Entities.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PatiVerCore.Domain.Entities.Response
+namespace PatiVerCore.Application.DTOs
 {
     [Serializable]
     public class Polis
@@ -35,7 +36,7 @@ namespace PatiVerCore.Domain.Entities.Response
         {
         }
 
-        public Polis(Foms.PolisData data)
+        public Polis(PolisData data)
         {
             Num = data.PolisNum;
             Type = data.PolisType;
@@ -52,7 +53,7 @@ namespace PatiVerCore.Domain.Entities.Response
                 CloseDate = date;
         }
 
-        static public Polis FromFomsData(Foms.PolisData data)
+        static public Polis FromFomsData(PolisData data)
         {
             return null == data ? null : new Polis(data);
         }

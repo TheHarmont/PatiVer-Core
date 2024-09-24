@@ -1,11 +1,12 @@
-﻿using System;
+﻿using PatiVerCore.Domain.Entities.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace PatiVerCore.Domain.Entities.Response
+namespace PatiVerCore.Application.DTOs
 {
     [Serializable]
     public class PatientData
@@ -68,7 +69,7 @@ namespace PatiVerCore.Domain.Entities.Response
         {
         }
 
-        public PatientData(Foms.PersonData data)
+        public PatientData(PersonData data)
         {
             FomsId = data.PersonId;
             ENP = data.PersonENP;
@@ -97,7 +98,7 @@ namespace PatiVerCore.Domain.Entities.Response
             Phone = data.PersonPhone;
         }
 
-        static public PatientData FromFomsData(Foms.PersonData data)
+        static public PatientData FromFomsData(PersonData data)
         {
             return null == data ? null : new PatientData(data);
         }

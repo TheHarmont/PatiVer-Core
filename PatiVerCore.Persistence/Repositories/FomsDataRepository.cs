@@ -1,27 +1,39 @@
-﻿using PatiVerCore.Application.Interfaces.Repositories;
+﻿using Microsoft.Extensions.Logging;
+using PatiVerCore.Application.DTOs;
+using PatiVerCore.Application.Interfaces.Repositories;
 using PatiVerCore.Domain.Common.Result;
 using PatiVerCore.Domain.Entities.Request;
 using PatiVerCore.Domain.Entities.Response;
+using PatiVerCore.Persistence.Common.Mappings;
 using PatiVerCore.Persistence.Connected.FomsConnectService;
 
 namespace PatiVerCore.Persistence.Repositories
 {
     public class FomsDataRepository : IFomsDataRepository
     {
-        private readonly MiacBDZServiceIdentClient client;
+        private const string Success = "В ФОМС была найдена запись";
+        private const string NotFound = "Пациент не найден";
+        private const string Unexpected = "Произошла непредвиденная ошибка";
+        private const string TimeOut = "Ошибка TimeOut";
+        private const string Invalid = "Невозможно обработать входящую модель";
 
-        public FomsDataRepository()
+        private readonly MiacBDZServiceIdentClient _client;
+        private readonly ILogger<FomsDataRepository> _logger;
+
+        public FomsDataRepository(ILogger<FomsDataRepository> logger)
         {
-            client = new MiacBDZServiceIdentClient();
+            _client = new MiacBDZServiceIdentClient();
+            _logger = logger;
         }
 
-        public async Task<Result<ResponseData>> GetPersonInfoAsync<T>(T request) where T : class
+        public async Task<Result<PersonResponse>> GetPersonInfoAsync<T>(T request) where T : class
         {
             try
             {
+                //Запрос по ФИО
                 if (request is PersonFIO fio) 
                 {
-                    var data = await client.GetPersonInfo_FIOAsync(
+                    var data = await _client.GetPersonInfo_FIOAsync(
                         fio.MoId,
                         fio.Surname,
                         fio.Firstname,
@@ -32,18 +44,17 @@ namespace PatiVerCore.Persistence.Repositories
                         fio.IsIPRAfirst,
                         fio.MIS);
 
-                    if(data.Result == "0") return await Result<ResponseData>.FailureAsync(ErrorType.NotFound,"Запись не найдена");
-                    if(data.Result == "1") return await Result<ResponseData>.SuccessAsync(data);
-                    //if(data.Result == "2") return; неизвестный код
-                    if(data.Result == "3") return await Result<ResponseData>.FailureAsync(ErrorType.MultipleFound, "Найдено больше одной записи");
+                    _logger.LogInformation(NotFound);
+                    if(data is null) return Result<PersonResponse>.Failure(ErrorType.NotFound, NotFound);
 
-                    return await Result<ResponseData>.FailureAsync(ErrorType.Unexpected, "Непредвиденный результат");
+                    _logger.LogInformation(Success + $": Result {data.Result}");
+                    return  Result<PersonResponse>.Success(data.ConvertToPersonResponse());
                 }
                     
-
+                //Запрос по снилс
                 if (request is PersonSnils snils)
                 {
-                    var data = await client.GetPersonInfo_SNILSAsync(
+                    var data = await _client.GetPersonInfo_SNILSAsync(
                         snils.MoId,
                         snils.Snils,
                         snils.Username,
@@ -51,17 +62,17 @@ namespace PatiVerCore.Persistence.Repositories
                         snils.IsIPRAfirst,
                         snils.MIS);
 
-                    if (data.Result == "0") return await Result<ResponseData>.FailureAsync(ErrorType.NotFound, "Запись не найдена");
-                    if (data.Result == "1") return await Result<ResponseData>.SuccessAsync(data);
-                    //if(data.Result == "2") return; неизвестный код
-                    if (data.Result == "3") return await Result<ResponseData>.FailureAsync(ErrorType.MultipleFound, "Найдено больше одной записи");
+                    _logger.LogInformation(NotFound);
+                    if (data is null) return Result<PersonResponse>.Failure(ErrorType.NotFound, NotFound);
 
-                    return await Result<ResponseData>.FailureAsync(ErrorType.Unexpected, "Непредвиденный результат");
+                    _logger.LogInformation(Success + $": Result {data.Result}");
+                    return Result<PersonResponse>.Success(data.ConvertToPersonResponse());
                 }
 
+                //Запрос по снисл
                 if (request is PersonPolis polis)
                 {
-                    var data = await client.GetPersonInfo_PolisAsync(
+                    var data = await _client.GetPersonInfo_PolisAsync(
                         polis.MoId,
                         polis.Polis,
                         polis.Username,
@@ -69,21 +80,26 @@ namespace PatiVerCore.Persistence.Repositories
                         polis.IsIPRAfirst,
                         polis.MIS);
 
-                    if (data.Result == "0") return await Result<ResponseData>.FailureAsync(ErrorType.NotFound, "Запись не найдена");
-                    if (data.Result == "1") return await Result<ResponseData>.SuccessAsync(data);
-                    //if(data.Result == "2") return; неизвестный код
-                    if (data.Result == "3") return await Result<ResponseData>.FailureAsync(ErrorType.MultipleFound, "Найдено больше одной записи");
+                    _logger.LogInformation(NotFound);
+                    if (data is null) return Result<PersonResponse>.Failure(ErrorType.NotFound, NotFound);
 
-                    return await Result<ResponseData>.FailureAsync(ErrorType.Unexpected, "Непредвиденный результат");
+                    _logger.LogInformation(Success + $": Result {data.Result}");
+                    return Result<PersonResponse>.Success(data.ConvertToPersonResponse());
                 }
 
-                return await Result<ResponseData>.FailureAsync(ErrorType.Invalid, "Неизвестная модель");
+                _logger.LogInformation(Invalid);
+                return Result<PersonResponse>.Failure(ErrorType.Invalid, Invalid);
+            }
+            catch (TimeoutException to_ex)
+            {
+                _logger.LogInformation(to_ex, TimeOut);
+                return Result<PersonResponse>.Failure(ErrorType.TimeOut, TimeOut);
             }
             catch (Exception ex)
             {
-                return await Result<ResponseData>.FailureAsync(ErrorType.Unexpected, $"Произошла непредвиденная ошибка: {ex.Message}");
+                _logger.LogInformation(ex, Unexpected);
+                return Result<PersonResponse>.Failure(ErrorType.Unexpected, Unexpected);
             }
-
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using PatiVerCore.Domain.Common.Result;
+﻿using PatiVerCore.Application.DTOs;
+using PatiVerCore.Domain.Common.Result;
 using PatiVerCore.Domain.Entities;
 using PatiVerCore.Domain.Entities.Request;
 using System;
@@ -21,7 +22,7 @@ namespace PatiVerCore.Application.Interfaces.Repositories
         /// <returns>
         /// 
         /// </returns>
-        public Task<Result<LocalData>> GetDataByFioAsync(PersonFIO data);
+        public Task<Result<PersonResponse>> GetDataByFioAsync(PersonFIO data);
 
         /// <summary>
         /// Возвращает данные пациента из БД, отфильтрованные по входным данным.
@@ -29,7 +30,7 @@ namespace PatiVerCore.Application.Interfaces.Repositories
         /// <param name="polis">Полис</param>
         /// <returns>
         /// <see cref="LocalData"/>
-        public Task<Result<LocalData>> GetDataByPolisAsync(PersonPolis data);
+        public Task<Result<PersonResponse>> GetDataByPolisAsync(PersonPolis data);
 
         /// <summary>
         /// Возвращает данные пациента из БД, отфильтрованные по входным данным.
@@ -37,7 +38,7 @@ namespace PatiVerCore.Application.Interfaces.Repositories
         /// <param name="snils">Снилс</param>
         /// <returns>
         /// <see cref="LocalData"/>
-        public Task<Result<LocalData>> GetDataBySnilsAsync(PersonSnils data);
+        public Task<Result<PersonResponse>> GetDataBySnilsAsync(PersonSnils data);
 
     }
 }

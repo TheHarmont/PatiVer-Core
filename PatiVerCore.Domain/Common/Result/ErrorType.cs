@@ -11,6 +11,7 @@ namespace PatiVerCore.Domain.Common.Result
         NotFound = 0,
         MultipleFound = 1,
         Unexpected = 2,
-        Invalid = 3
+        Invalid = 3,
+        TimeOut = 4
     }
 }

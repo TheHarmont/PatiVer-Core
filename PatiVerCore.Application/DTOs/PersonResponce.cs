@@ -25,9 +25,5 @@ namespace PatiVerCore.Application.DTOs //Установил такое ПИ, ч�
 
         [XmlElement(IsNullable = true)]
         public string MessageData;
-
-        [XmlIgnore]
-        [NonSerialized]
-        public DateTime CreateDate;
     }
 }

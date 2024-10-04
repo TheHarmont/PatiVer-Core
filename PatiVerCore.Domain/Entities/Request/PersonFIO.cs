@@ -1,5 +1,6 @@
 ﻿using PatiVerCore.Domain.Common;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
@@ -34,14 +35,14 @@ namespace PatiVerCore.Domain.Entities.Request
         public DateTime? ParsedBirthday { get; set; }
 
         public PersonFIO(
-            string moId, 
+            string moId,
             string surname,
-            string firstname, 
-            string patronymic, 
-            string birthday, 
-            string username, 
-            string password, 
-            bool isIPRAfirst, 
+            string firstname,
+            string patronymic,
+            string birthday,
+            string username,
+            string password,
+            bool isIPRAfirst,
             int mis)
             : base(moId, username, password, isIPRAfirst, mis)
         {
@@ -76,16 +77,31 @@ namespace PatiVerCore.Domain.Entities.Request
             //Проверка даты рождения
             if (!string.IsNullOrEmpty(Birthday))
             {
-                if(DateTime.TryParse(Birthday, out DateTime parseDate))
+
+                DateTime parseDate;
+                if (DateTime.TryParse(Birthday, out parseDate)) //Стандартная проверка
                 {
                     ParsedBirthday = parseDate;
                 }
-                else 
+                else
                 {
-                    validateErrors.Add("Дата рождения неверного формата");
+                    string[] possibleFormats = { "dd.MM.yyyy", "dd/MM/yyyy", "dd-MM-yyyy" };
+                    if (DateTime.TryParseExact(
+                        Birthday,
+                        possibleFormats,
+                        CultureInfo.InvariantCulture,
+                        DateTimeStyles.None,
+                        out parseDate)) //Проверка на возможные форматы
+                    {
+                        ParsedBirthday = parseDate;
+                    }
+                    else
+                    {
+                        validateErrors.Add("Дата рождения неверного формата");
+                    }
                 }
             }
-            else 
+            else
             {
                 validateErrors.Add("Отсутствует дата рождения");
             }

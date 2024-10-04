@@ -9,7 +9,7 @@ namespace PatiVerCore.Persistence.Extensions
 {
     public static class IServiceCollectionExtensions
     {
-        private const string connectionStringSectionName = "PatiVer";
+        private const string DataBaseConnectionString = "PatiVer";
 
         public static void AddPersistenceLayer(this IServiceCollection services, IConfiguration configuration)
         {
@@ -19,11 +19,15 @@ namespace PatiVerCore.Persistence.Extensions
 
         public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString(connectionStringSectionName);
+            var connectionString = configuration.GetConnectionString(DataBaseConnectionString);
 
             services.AddDbContext<AppDBContext>(options =>
                options.UseSqlServer(connectionString,
-                   builder => builder.MigrationsAssembly(typeof(AppDBContext).Assembly.FullName)));
+               builder =>
+               {
+                   builder.CommandTimeout(30); //TimeOut 30 секунд
+                   builder.MigrationsAssembly(typeof(AppDBContext).Assembly.FullName);
+               }));
         }
 
         private static void AddRepositories(this IServiceCollection services)

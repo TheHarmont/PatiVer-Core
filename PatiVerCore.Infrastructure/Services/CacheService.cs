@@ -24,8 +24,14 @@ namespace PatiVerCore.Infrastructure.Services
                 SlidingExpiration = (TimeSpan.FromDays(2))  //Если в течение 2-х дней к записи не обратились, то запись будет удалена
             };
 
+        //Настройки сериализации
+        private static readonly JsonSerializerOptions serializeOptions 
+            = new JsonSerializerOptions 
+            { 
+                IncludeFields = true  //Чтобы выполнялась сериализация полей, а не только свойств
+            };
 
-        public async Task<Result<PersonResponse>> GetCacheDataAsync(string key)
+    public async Task<Result<PersonResponse>> GetCacheDataAsync(string key)
         {
             try
             {
@@ -45,7 +51,7 @@ namespace PatiVerCore.Infrastructure.Services
                 }
 
                 //Десериализуем строку в объект
-                var response = JsonSerializer.Deserialize<PersonResponse>(cacheJson);
+                var response = JsonSerializer.Deserialize<PersonResponse>(cacheJson, serializeOptions);
 
                 if (response is null)
                 {
@@ -68,7 +74,7 @@ namespace PatiVerCore.Infrastructure.Services
             try
             {
                 // сериализуем данные в строку в формате json
-                var responseString = JsonSerializer.Serialize(response);
+                var responseString = JsonSerializer.Serialize(response, serializeOptions);
                 // сохраняем строковое представление объекта в формате json в кэш на 2 минуты
                 await _distributedCache.SetStringAsync(key, responseString, redisOptions);
 

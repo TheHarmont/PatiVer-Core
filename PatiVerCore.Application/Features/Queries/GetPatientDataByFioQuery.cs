@@ -36,6 +36,13 @@ namespace PatiVerCore.Application.Features.Queries
 
             if (fomsDataResult.isSuccess)
             {
+                //Дополняем данными из запроса
+                var data = fomsDataResult.Data;
+                data.PatientData.Surname = personFIO.Surname;
+                data.PatientData.Name = personFIO.Firstname;
+                data.PatientData.Patronymic = personFIO.Patronymic;
+                data.PatientData.BirthDate = personFIO.ParsedBirthday;
+
                 await cacheService.SetCacheDataAsync(key, fomsDataResult.Data); //Сохраняем в КЭШ
                 return fomsDataResult; //Запись найдена в КЭШ
             }

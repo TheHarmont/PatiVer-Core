@@ -6,12 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>8d0fe468-29aa-43db-a090-617f7df46d65</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CoreWCF.Http" Version="1.6.0" />
     <PackageReference Include="CoreWCF.Primitives" Version="1.6.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
+    <PackageReference Include="NLog" Version="5.3.4" />
+    <PackageReference Include="NLog.Database" Version="5.3.4" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.14" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,5 +24,7 @@
     <ProjectReference Include="..\PatiVerCore.Infrastructure\PatiVerCore.Infrastructure.csproj" />
     <ProjectReference Include="..\PatiVerCore.Persistence\PatiVerCore.Persistence.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
 
 </Project>

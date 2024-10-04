@@ -2,16 +2,13 @@
 {
     public class Result<T>
     {
-        public string Message { get; }
-        public bool isSuccess { get; }
-        public T Data { get; }
-        public ErrorType ErrorType { get; }
-        public Exception Exception { get;  }
-
-        #region Non Async Methods 
+        public string Message { get; private set; }
+        public bool isSuccess { get; private set; }
+        public T Data { get; private set; }
+        public ErrorType ErrorType { get; private set; }
+        public Exception Exception { get; private set; }
 
         #region Success Methods 
-
         public static Result<T> Success()
         {
             return new Result<T>
@@ -37,7 +34,11 @@
 
         #endregion
 
-        #region Failure Methods 
+        #region Failure Methods
+        public static Result<T> Failure()
+        {
+            return new Result<T> { isSuccess = false };
+        }
 
         public static Result<T> Failure(ErrorType errorType)
         {
@@ -64,64 +65,10 @@
             return new Result<T> { isSuccess = false, ErrorType = errorType, Exception = exception };
         }
 
-        #endregion
-
-        #endregion
-
-        #region Async Methods 
-
-        #region Success Methods 
-
-        public static Task<Result<T>> SuccessAsync()
+        public static Result<T> Failure(ErrorType errorType, Exception exception, string message)
         {
-            return Task.FromResult(Success());
+            return new Result<T> { isSuccess = false, ErrorType = errorType, Exception = exception, Message = message };
         }
-
-        public static Task<Result<T>> SuccessAsync(string message)
-        {
-            return Task.FromResult(Success(message));
-        }
-
-        public static Task<Result<T>> SuccessAsync(T data)
-        {
-            return Task.FromResult(Success(data));
-        }
-
-        public static Task<Result<T>> SuccessAsync(T data, string message)
-        {
-            return Task.FromResult(Success(data, message));
-        }
-
-        #endregion
-
-        #region Failure Methods 
-
-        public static Task<Result<T>> FailureAsync(ErrorType errorType)
-        {
-            return Task.FromResult(Failure(errorType));
-        }
-
-        public static Task<Result<T>> FailureAsync(ErrorType errorType, string message)
-        {
-            return Task.FromResult(Failure(errorType, message));
-        }
-
-        public static Task<Result<T>> FailureAsync(ErrorType errorType, T data)
-        {
-            return Task.FromResult(Failure(errorType, data));
-        }
-
-        public static Task<Result<T>> FailureAsync(ErrorType errorType, T data, string message)
-        {
-            return Task.FromResult(Failure(errorType, data, message));
-        }
-
-        public static Task<Result<T>> FailureAsync(ErrorType errorType, Exception exception)
-        {
-            return Task.FromResult(Failure(errorType, exception));
-        }
-
-        #endregion
 
         #endregion
     }

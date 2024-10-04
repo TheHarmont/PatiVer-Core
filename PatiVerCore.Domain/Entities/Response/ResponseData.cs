@@ -49,7 +49,7 @@ namespace PatiVerCore.Domain.Entities.Response
         }
 
         [System.Runtime.Serialization.DataMember(Order = 2)]
-        public FomsService.PersonData personData
+        public PersonData personData
         {
             get
             {
@@ -62,7 +62,7 @@ namespace PatiVerCore.Domain.Entities.Response
         }
 
         [System.Runtime.Serialization.DataMember(Order = 3)]
-        public FomsService.AttachmentData attachmentData
+        public AttachmentData attachmentData
         {
             get
             {
@@ -75,7 +75,7 @@ namespace PatiVerCore.Domain.Entities.Response
         }
 
         [System.Runtime.Serialization.DataMember(Order = 4)]
-        public FomsService.PolisData polisData
+        public PolisData polisData
         {
             get
             {

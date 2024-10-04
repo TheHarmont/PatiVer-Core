@@ -1,4 +1,5 @@
-﻿using PatiVerCore.Domain.Common.Result;
+﻿using PatiVerCore.Application.DTOs;
+using PatiVerCore.Domain.Common.Result;
 using PatiVerCore.Domain.Entities.Request;
 using PatiVerCore.Domain.Entities.Response;
 
@@ -21,7 +22,8 @@ namespace PatiVerCore.Application.Interfaces.Repositories
         /// <para><see cref="MultipleFoundResult"/></para> 
         /// <para><see cref="InvalidResult"/></para> 
         /// <para><see cref="UnexpectedResult"/></para> 
+        /// <para><see cref="TimeOut"/></para> 
         /// </returns>
-        public Task<Result<ResponseData>> GetPersonInfoAsync<T>(T request) where T : class;
+        public Task<Result<PersonResponse>> GetPersonInfoAsync<T>(T request) where T : class;
     }
 }

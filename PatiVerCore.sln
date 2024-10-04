@@ -17,7 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatiVerCore.Infrastructure"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatiVerCore.Persistence", "PatiVerCore.Persistence\PatiVerCore.Persistence.csproj", "{0C5D05FD-2739-4623-8117-8FDD8CEF5F47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatiVerCore.Domain", "PatiVerCore.Domain\PatiVerCore.Domain.csproj", "{9E082F74-D327-459F-BEE3-B6786F7A9994}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PatiVerCore.Domain", "PatiVerCore.Domain\PatiVerCore.Domain.csproj", "{9E082F74-D327-459F-BEE3-B6786F7A9994}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{7F584675-C982-48DB-A3AB-B07BBAA78C05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{9E082F74-D327-459F-BEE3-B6786F7A9994}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E082F74-D327-459F-BEE3-B6786F7A9994}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E082F74-D327-459F-BEE3-B6786F7A9994}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F584675-C982-48DB-A3AB-B07BBAA78C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F584675-C982-48DB-A3AB-B07BBAA78C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F584675-C982-48DB-A3AB-B07BBAA78C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F584675-C982-48DB-A3AB-B07BBAA78C05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,9 +12,7 @@ namespace PatiVerCore.Infrastructure.Extensions
 {
     public static class IServiceCollectionExtensions
     {
-        private const string redisSectionName = "Redis";
-        private const string configSectionName = "Configuration";
-        private const string instanceSectionName = "InstanceName";
+        private const string RedisConnectionString = "Redis";
 
         public static void AddInfrastructureLayer(this IServiceCollection services, IConfiguration configuration)
         {
@@ -24,22 +22,18 @@ namespace PatiVerCore.Infrastructure.Extensions
 
         private static void AddRedis(this IServiceCollection services, IConfiguration configuration)
         {
-            var redisConfig = configuration.GetSection(redisSectionName);
-            var config = redisConfig[configSectionName];
-            var instanceName = redisConfig[instanceSectionName];
+            var connectionString = configuration.GetConnectionString(RedisConnectionString);
 
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = config;
-                options.InstanceName = instanceName;
+                options.Configuration = connectionString;
             });
         }
 
         private static void AddServices(this IServiceCollection services)
         {
             services
-                .AddTransient<ICacheService, CacheService>()
-                .AddTransient<IFomsService, FomsService>();
+                .AddTransient<ICacheService, CacheService>();
         }
     }
 }

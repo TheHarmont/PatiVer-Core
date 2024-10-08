@@ -1,14 +1,14 @@
 {
   "ExtendedData": {
     "inputs": [
-      "http://192.168.10.6:80/MiacBDZServiceIdent.svc?wsdl"
+      "http://7.11.120.7:5000/MiacBDZService?wsdl"
     ],
     "collectionTypes": [
       "System.Array",
       "System.Collections.Generic.Dictionary`2"
     ],
     "namespaceMappings": [
-      "*, FomsService"
+      "*, MiacBDZServiceIdentClient"
     ],
     "targetFramework": "net8.0",
     "typeReuseMode": "All"

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PatiVerCore.Domain.Entities.Response
 {
-    [System.Diagnostics.DebuggerStepThrough()]
-    [System.CodeDom.Compiler.GeneratedCode("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.Runtime.Serialization.DataContract(Name = "PersonData", Namespace = "http://khfoms.ru/bdz")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "PersonData", Namespace = "http://khfoms.ru/bdz")]
     public partial class PersonData : object
     {
 
@@ -52,263 +52,263 @@ namespace PatiVerCore.Domain.Entities.Response
 
         private string PersonPhoneField;
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string PersonId
         {
             get
             {
-                return PersonIdField;
+                return this.PersonIdField;
             }
             set
             {
-                PersonIdField = value;
+                this.PersonIdField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 1)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 1)]
         public string PersonENP
         {
             get
             {
-                return PersonENPField;
+                return this.PersonENPField;
             }
             set
             {
-                PersonENPField = value;
+                this.PersonENPField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 2)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 2)]
         public string PersonSurname
         {
             get
             {
-                return PersonSurnameField;
+                return this.PersonSurnameField;
             }
             set
             {
-                PersonSurnameField = value;
+                this.PersonSurnameField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 3)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 3)]
         public string PersonFirstname
         {
             get
             {
-                return PersonFirstnameField;
+                return this.PersonFirstnameField;
             }
             set
             {
-                PersonFirstnameField = value;
+                this.PersonFirstnameField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 4)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 4)]
         public string PersonSecname
         {
             get
             {
-                return PersonSecnameField;
+                return this.PersonSecnameField;
             }
             set
             {
-                PersonSecnameField = value;
+                this.PersonSecnameField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 5)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 5)]
         public string PersonBirthday
         {
             get
             {
-                return PersonBirthdayField;
+                return this.PersonBirthdayField;
             }
             set
             {
-                PersonBirthdayField = value;
+                this.PersonBirthdayField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 6)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 6)]
         public string PersonSex
         {
             get
             {
-                return PersonSexField;
+                return this.PersonSexField;
             }
             set
             {
-                PersonSexField = value;
+                this.PersonSexField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 7)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 7)]
         public string PersonBirthplace
         {
             get
             {
-                return PersonBirthplaceField;
+                return this.PersonBirthplaceField;
             }
             set
             {
-                PersonBirthplaceField = value;
+                this.PersonBirthplaceField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 8)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 8)]
         public string PersonSNILS
         {
             get
             {
-                return PersonSNILSField;
+                return this.PersonSNILSField;
             }
             set
             {
-                PersonSNILSField = value;
+                this.PersonSNILSField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 9)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 9)]
         public PersonAddress personAddress
         {
             get
             {
-                return personAddressField;
+                return this.personAddressField;
             }
             set
             {
-                personAddressField = value;
+                this.personAddressField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 10)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 10)]
         public string PersonCitizenship
         {
             get
             {
-                return PersonCitizenshipField;
+                return this.PersonCitizenshipField;
             }
             set
             {
-                PersonCitizenshipField = value;
+                this.PersonCitizenshipField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 11)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 11)]
         public string DocumentType
         {
             get
             {
-                return DocumentTypeField;
+                return this.DocumentTypeField;
             }
             set
             {
-                DocumentTypeField = value;
+                this.DocumentTypeField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 12)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 12)]
         public string DocumentSer
         {
             get
             {
-                return DocumentSerField;
+                return this.DocumentSerField;
             }
             set
             {
-                DocumentSerField = value;
+                this.DocumentSerField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 13)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 13)]
         public string DocumentNum
         {
             get
             {
-                return DocumentNumField;
+                return this.DocumentNumField;
             }
             set
             {
-                DocumentNumField = value;
+                this.DocumentNumField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 14)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 14)]
         public string DocumentDate
         {
             get
             {
-                return DocumentDateField;
+                return this.DocumentDateField;
             }
             set
             {
-                DocumentDateField = value;
+                this.DocumentDateField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 15)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 15)]
         public string DocumentOrg
         {
             get
             {
-                return DocumentOrgField;
+                return this.DocumentOrgField;
             }
             set
             {
-                DocumentOrgField = value;
+                this.DocumentOrgField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 16)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 16)]
         public string PersonSocStatus
         {
             get
             {
-                return PersonSocStatusField;
+                return this.PersonSocStatusField;
             }
             set
             {
-                PersonSocStatusField = value;
+                this.PersonSocStatusField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 17)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 17)]
         public string PersonCategory
         {
             get
             {
-                return PersonCategoryField;
+                return this.PersonCategoryField;
             }
             set
             {
-                PersonCategoryField = value;
+                this.PersonCategoryField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 18)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 18)]
         public string PersonDeathDate
         {
             get
             {
-                return PersonDeathDateField;
+                return this.PersonDeathDateField;
             }
             set
             {
-                PersonDeathDateField = value;
+                this.PersonDeathDateField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 19)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 19)]
         public string PersonPhone
         {
             get
             {
-                return PersonPhoneField;
+                return this.PersonPhoneField;
             }
             set
             {
-                PersonPhoneField = value;
+                this.PersonPhoneField = value;
             }
         }
     }

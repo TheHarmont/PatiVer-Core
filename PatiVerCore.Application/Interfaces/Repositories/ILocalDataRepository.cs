@@ -1,44 +1,20 @@
 ﻿using PatiVerCore.Application.DTOs;
-using PatiVerCore.Domain.Common.Result;
-using PatiVerCore.Domain.Entities;
+using PatiVerCore.Domain.Common;
 using PatiVerCore.Domain.Entities.Request;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PatiVerCore.Application.Interfaces.Repositories
 {
     public interface ILocalDataRepository
     {
         /// <summary>
-        /// Возвращает данные пациента из БД, отфильтрованные по входным данным.
+        /// Возвращает задачу, содержашую результат выполнения операции получения данных из локальной базы
         /// </summary>
-        /// <param name="firstName">Имя</param>
-        /// <param name="lastName">Фамилия</param>
-        /// <param name="patronymic">Отчество</param>
-        /// <param name="birthDate">Дата рождения</param>
-        /// <returns>
-        /// 
-        /// </returns>
-        public Task<Result<PersonResponse>> GetDataByFioAsync(PersonFIO data);
-
-        /// <summary>
-        /// Возвращает данные пациента из БД, отфильтрованные по входным данным.
-        /// </summary>
-        /// <param name="polis">Полис</param>
-        /// <returns>
-        /// <see cref="LocalData"/>
-        public Task<Result<PersonResponse>> GetDataByPolisAsync(PersonPolis data);
-
-        /// <summary>
-        /// Возвращает данные пациента из БД, отфильтрованные по входным данным.
-        /// </summary>
-        /// <param name="snils">Снилс</param>
-        /// <returns>
-        /// <see cref="LocalData"/>
-        public Task<Result<PersonResponse>> GetDataBySnilsAsync(PersonSnils data);
-
+        /// <param name="personData">
+        /// <para><see cref="PersonFIO"/> данные с ФИО</para>
+        /// <para><see cref="PersonSnils"/> данные со Снилс</para>
+        /// <para><see cref="PersonPolis"/> данные с Полис</para>
+        /// </param>
+        /// <returns><see cref="PersonResponse"/> - данные о пациенте</returns>
+        public Task<Result<PersonResponse>> GetLocalDataAsync<T>(T personData) where T : class;
     }
 }

@@ -17,91 +17,91 @@ namespace PatiVerCore.Persistence.Connected.FomsConnectService
 
     //Здесь была модель PersonData
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="FomsService.IMiacBDZServiceIdent")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace = "http://khfoms.ru/bdz", ConfigurationName = "MiacBDZServiceIdentClient.IMiacBDZServiceIdent")]
     public interface IMiacBDZServiceIdent
     {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiacBDZServiceIdent/GetPersonInfo_FIO", ReplyAction="http://tempuri.org/IMiacBDZServiceIdent/GetPersonInfo_FIOResponse")]
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://khfoms.ru/bdz/IMiacBDZServiceIdent/GetPersonInfo_FIO", ReplyAction = "http://khfoms.ru/bdz/IMiacBDZServiceIdent/GetPersonInfo_FIOResponse")]
         System.Threading.Tasks.Task<ResponseData> GetPersonInfo_FIOAsync(string userId, string surname, string firstname, string patronymic, string birthday, string UserName, string UserPassword, bool isIPRAfirst, int MIS);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiacBDZServiceIdent/GetPersonInfo_SNILS", ReplyAction="http://tempuri.org/IMiacBDZServiceIdent/GetPersonInfo_SNILSResponse")]
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://khfoms.ru/bdz/IMiacBDZServiceIdent/GetPersonInfo_SNILS", ReplyAction = "http://khfoms.ru/bdz/IMiacBDZServiceIdent/GetPersonInfo_SNILSResponse")]
         System.Threading.Tasks.Task<ResponseData> GetPersonInfo_SNILSAsync(string userId, string snils, string UserName, string UserPassword, bool isIPRAfirst, int MIS);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMiacBDZServiceIdent/GetPersonInfo_Polis", ReplyAction="http://tempuri.org/IMiacBDZServiceIdent/GetPersonInfo_PolisResponse")]
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://khfoms.ru/bdz/IMiacBDZServiceIdent/GetPersonInfo_Polis", ReplyAction = "http://khfoms.ru/bdz/IMiacBDZServiceIdent/GetPersonInfo_PolisResponse")]
         System.Threading.Tasks.Task<ResponseData> GetPersonInfo_PolisAsync(string userId, string polis, string UserName, string UserPassword, bool isIPRAfirst, int MIS);
     }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     public interface IMiacBDZServiceIdentChannel : IMiacBDZServiceIdent, System.ServiceModel.IClientChannel
     {
     }
-    
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     public partial class MiacBDZServiceIdentClient : System.ServiceModel.ClientBase<IMiacBDZServiceIdent>, IMiacBDZServiceIdent
     {
-        
+
         /// <summary>
         /// Реализуйте этот разделяемый метод для настройки конечной точки службы.
         /// </summary>
         /// <param name="serviceEndpoint">Настраиваемая конечная точка</param>
         /// <param name="clientCredentials">Учетные данные клиента.</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
-        
-        public MiacBDZServiceIdentClient() : 
+
+        public MiacBDZServiceIdentClient() :
                 base(MiacBDZServiceIdentClient.GetDefaultBinding(), MiacBDZServiceIdentClient.GetDefaultEndpointAddress())
         {
             this.Endpoint.Name = EndpointConfiguration.BasicHttpBinding_IMiacBDZServiceIdent.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
-        
-        public MiacBDZServiceIdentClient(EndpointConfiguration endpointConfiguration) : 
+
+        public MiacBDZServiceIdentClient(EndpointConfiguration endpointConfiguration) :
                 base(MiacBDZServiceIdentClient.GetBindingForEndpoint(endpointConfiguration), MiacBDZServiceIdentClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
-        
-        public MiacBDZServiceIdentClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+
+        public MiacBDZServiceIdentClient(EndpointConfiguration endpointConfiguration, string remoteAddress) :
                 base(MiacBDZServiceIdentClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
-        
-        public MiacBDZServiceIdentClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+
+        public MiacBDZServiceIdentClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) :
                 base(MiacBDZServiceIdentClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
-        
-        public MiacBDZServiceIdentClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+
+        public MiacBDZServiceIdentClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) :
                 base(binding, remoteAddress)
         {
         }
-        
+
         public System.Threading.Tasks.Task<ResponseData> GetPersonInfo_FIOAsync(string userId, string surname, string firstname, string patronymic, string birthday, string UserName, string UserPassword, bool isIPRAfirst, int MIS)
         {
             return base.Channel.GetPersonInfo_FIOAsync(userId, surname, firstname, patronymic, birthday, UserName, UserPassword, isIPRAfirst, MIS);
         }
-        
+
         public System.Threading.Tasks.Task<ResponseData> GetPersonInfo_SNILSAsync(string userId, string snils, string UserName, string UserPassword, bool isIPRAfirst, int MIS)
         {
             return base.Channel.GetPersonInfo_SNILSAsync(userId, snils, UserName, UserPassword, isIPRAfirst, MIS);
         }
-        
+
         public System.Threading.Tasks.Task<ResponseData> GetPersonInfo_PolisAsync(string userId, string polis, string UserName, string UserPassword, bool isIPRAfirst, int MIS)
         {
             return base.Channel.GetPersonInfo_PolisAsync(userId, polis, UserName, UserPassword, isIPRAfirst, MIS);
         }
-        
+
         public virtual System.Threading.Tasks.Task OpenAsync()
         {
             return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndOpen));
         }
-        
+
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IMiacBDZServiceIdent))
@@ -115,29 +115,29 @@ namespace PatiVerCore.Persistence.Connected.FomsConnectService
             }
             throw new System.InvalidOperationException(string.Format("Не удалось найти конечную точку с именем \"{0}\".", endpointConfiguration));
         }
-        
+
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IMiacBDZServiceIdent))
             {
-                return new System.ServiceModel.EndpointAddress("http://192.168.10.6/MiacBDZServiceIdent.svc");
+                return new System.ServiceModel.EndpointAddress("http://7.11.120.7:5000/MiacBDZService/basicHttp");
             }
             throw new System.InvalidOperationException(string.Format("Не удалось найти конечную точку с именем \"{0}\".", endpointConfiguration));
         }
-        
+
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
             return MiacBDZServiceIdentClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IMiacBDZServiceIdent);
         }
-        
+
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
             return MiacBDZServiceIdentClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IMiacBDZServiceIdent);
         }
-        
+
         public enum EndpointConfiguration
         {
-            
+
             BasicHttpBinding_IMiacBDZServiceIdent,
         }
     }

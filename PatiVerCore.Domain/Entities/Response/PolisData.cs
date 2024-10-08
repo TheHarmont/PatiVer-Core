@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PatiVerCore.Domain.Entities.Response
 {
-    [System.Diagnostics.DebuggerStepThrough()]
-    [System.CodeDom.Compiler.GeneratedCode("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.Runtime.Serialization.DataContract(Name = "PolisData", Namespace = "http://khfoms.ru/bdz")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "PolisData", Namespace = "http://khfoms.ru/bdz")]
     public partial class PolisData : object
     {
 
@@ -26,94 +26,94 @@ namespace PatiVerCore.Domain.Entities.Response
 
         private string PolisCloseReasonField;
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string PolisNum
         {
             get
             {
-                return PolisNumField;
+                return this.PolisNumField;
             }
             set
             {
-                PolisNumField = value;
+                this.PolisNumField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string PolisType
         {
             get
             {
-                return PolisTypeField;
+                return this.PolisTypeField;
             }
             set
             {
-                PolisTypeField = value;
+                this.PolisTypeField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 2)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 2)]
         public string PolisBeginDate
         {
             get
             {
-                return PolisBeginDateField;
+                return this.PolisBeginDateField;
             }
             set
             {
-                PolisBeginDateField = value;
+                this.PolisBeginDateField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 3)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 3)]
         public string PolisEndDate
         {
             get
             {
-                return PolisEndDateField;
+                return this.PolisEndDateField;
             }
             set
             {
-                PolisEndDateField = value;
+                this.PolisEndDateField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 4)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 4)]
         public string PolisCloseDate
         {
             get
             {
-                return PolisCloseDateField;
+                return this.PolisCloseDateField;
             }
             set
             {
-                PolisCloseDateField = value;
+                this.PolisCloseDateField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 5)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 5)]
         public string PolisSMO
         {
             get
             {
-                return PolisSMOField;
+                return this.PolisSMOField;
             }
             set
             {
-                PolisSMOField = value;
+                this.PolisSMOField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 6)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 6)]
         public string PolisCloseReason
         {
             get
             {
-                return PolisCloseReasonField;
+                return this.PolisCloseReasonField;
             }
             set
             {
-                PolisCloseReasonField = value;
+                this.PolisCloseReasonField = value;
             }
         }
     }

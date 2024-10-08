@@ -16,17 +16,7 @@ namespace PatiVerCore.Persistence.Common.Mappings
         /// </summary>
         public static PersonResponse ConvertToPersonResponse(this LocalData data)
         {
-            if (data == null) return null;
-
-            var fomsData = new ResponseData();
-            PersonResponse result = new PersonResponse()
-            {
-                SearchResult = fomsData.Result,
-                PatientData = PatientData.FromFomsData(new PersonData()),
-                AttachmentData = PatientAttachment.FromFomsData(new AttachmentData()),
-                PolisData = Polis.FromFomsData(new PolisData()),
-                MessageData = fomsData.Message
-            };
+            PersonResponse result = new();
 
             //Наполнение данными
             result.SearchResult = "1";
@@ -35,6 +25,7 @@ namespace PatiVerCore.Persistence.Common.Mappings
             result.PatientData.Name = data.Firstname;
             result.PatientData.Surname = data.Lastname;
             result.PatientData.Patronymic = data.Patronymic;
+
             if (DateTime.TryParse(data.Birthdate, out DateTime personBirthDate)) result.PatientData.BirthDate = personBirthDate;
             if (DateTime.TryParse(data.BeginDate, out DateTime attachBeginDate)) result.AttachmentData.BeginDate = attachBeginDate;
             if (DateTime.TryParse(data.EndDate, out DateTime attachEndDate)) result.AttachmentData.EndDate = attachEndDate;

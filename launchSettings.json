@@ -7,6 +7,14 @@
         "redis_cache": "StartWithoutDebugging",
         "pativercore.webapi": "StartDebugging"
       }
+    },
+    "Release": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "pativercore.webapi": "StartWithoutDebugging",
+        "redis_cache": "StartWithoutDebugging"
+      }
     }
   }
 }

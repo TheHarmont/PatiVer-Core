@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using PatiVerCore.Application.DTOs;
 using PatiVerCore.Application.Interfaces;
 using PatiVerCore.Application.Interfaces.Repositories;
-using PatiVerCore.Domain.Common.Result;
+using PatiVerCore.Domain.Common;
 using PatiVerCore.Domain.Entities.Request;
 
 namespace PatiVerCore.Application.Features.Queries
@@ -17,6 +18,7 @@ namespace PatiVerCore.Application.Features.Queries
     }
 
     internal class GetPatientDataByFioHandler(
+        ILogger<GetPatientDataByFioHandler> logger,
         ICacheService cacheService,
         IFomsDataRepository fomsDataRepository,
         ILocalDataRepository localDataRepository) : IRequestHandler<GetPatientDataByFioQuery, Result<PersonResponse>>
@@ -26,34 +28,35 @@ namespace PatiVerCore.Application.Features.Queries
             var personFIO = query.PersonFio;
             var key = personFIO.Firstname?.ToLower().Trim() + personFIO.Surname?.ToLower().Trim() + personFIO.Patronymic?.ToLower().Trim() + personFIO.ParsedBirthday?.ToString("yyyy-mm-dd");
 
-
             //Проверка в КЭШ
             var cacheDataResult = await cacheService.GetCacheDataAsync(key);
-            if (cacheDataResult.isSuccess) return cacheDataResult; //Запись найдена в КЭШ
+            if (cacheDataResult.IsSuccess) return cacheDataResult; //Запись найдена в КЭШ
 
-            //Проверка в ФОМС
-            var fomsDataResult = await fomsDataRepository.GetPersonInfoAsync(personFIO);
-
-            if (fomsDataResult.isSuccess)
+            try
             {
-                //Дополняем данными из запроса
-                var data = fomsDataResult.Data;
-                data.PatientData.Surname = personFIO.Surname;
-                data.PatientData.Name = personFIO.Firstname;
-                data.PatientData.Patronymic = personFIO.Patronymic;
-                data.PatientData.BirthDate = personFIO.ParsedBirthday;
+                //Проверка в ФОМС
+                var fomsDataResult = await fomsDataRepository.GetPersonInfoAsync(personFIO);
 
-                await cacheService.SetCacheDataAsync(key, fomsDataResult.Data); //Сохраняем в КЭШ
-                return fomsDataResult; //Запись найдена в КЭШ
+                if (fomsDataResult.IsSuccess)
+                {
+                    //Дополняем данными из запроса
+                    var data = fomsDataResult.Data;
+                    data.PatientData.Surname = personFIO.Surname;
+                    data.PatientData.Name = personFIO.Firstname;
+                    data.PatientData.Patronymic = personFIO.Patronymic;
+                    data.PatientData.BirthDate = personFIO.ParsedBirthday;
+
+                    await cacheService.SetCacheDataAsync(key, fomsDataResult.Data); //Сохраняем в КЭШ
+                }
+
+                return fomsDataResult;
             }
-
-            //Если TimeOut, выполняем запрос в локальную базу
-            if (fomsDataResult.ErrorType == ErrorType.TimeOut)
+            catch (TimeoutException to_ex)
             {
-                return await localDataRepository.GetDataByFioAsync(personFIO);
+                // Если TimeOut, выполняем запрос в локальную базу
+                logger.LogInformation(to_ex, to_ex.Message);
+                return await localDataRepository.GetLocalDataAsync(personFIO);
             }
-
-            return fomsDataResult;
         }
     }
 }

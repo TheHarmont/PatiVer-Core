@@ -1,6 +1,6 @@
 ﻿namespace PatiVerCore.WebApi.Common
 {
-    public static class DataRequestProvider
+    internal static class DataRequestProvider
     {
         public static string? GetRequestIp(this HttpContext httpContext)
         {

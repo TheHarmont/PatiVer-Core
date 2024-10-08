@@ -1,14 +1,10 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using PatiVerCore.Application.DTOs;
-using PatiVerCore.Application.Interfaces.Repositories;
 using PatiVerCore.Application.Interfaces;
-using PatiVerCore.Domain.Common.Result;
+using PatiVerCore.Application.Interfaces.Repositories;
+using PatiVerCore.Domain.Common;
 using PatiVerCore.Domain.Entities.Request;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PatiVerCore.Application.Features.Queries
 {
@@ -22,6 +18,7 @@ namespace PatiVerCore.Application.Features.Queries
     }
 
     internal class GetPatientDataBySnilsHandler(
+        ILogger<GetPatientDataBySnilsHandler> logger,
         ICacheService cacheService,
         IFomsDataRepository fomsDataRepository,
         ILocalDataRepository localDataRepository) : IRequestHandler<GetPatientDataBySnilsQuery, Result<PersonResponse>>
@@ -33,24 +30,26 @@ namespace PatiVerCore.Application.Features.Queries
 
             //Проверка в КЭШ
             var cacheDataResult = await cacheService.GetCacheDataAsync(key);
-            if (cacheDataResult.isSuccess) return cacheDataResult; //Запись найдена в КЭШ
+            if (cacheDataResult.IsSuccess) return cacheDataResult; //Запись найдена в КЭШ
 
-            //Проверка в ФОМС
-            var fomsDataResult = await fomsDataRepository.GetPersonInfoAsync(personSnils);
-
-            if (fomsDataResult.isSuccess)
+            try
             {
-                await cacheService.SetCacheDataAsync(key, fomsDataResult.Data); //Сохраняем в КЭШ
-                return fomsDataResult; //Запись найдена в КЭШ
-            }
+                //Проверка в ФОМС
+                var fomsDataResult = await fomsDataRepository.GetPersonInfoAsync(personSnils);
 
-            //Если TimeOut, выполняем запрос в локальную базу
-            if (fomsDataResult.ErrorType == ErrorType.TimeOut)
+                if (fomsDataResult.IsSuccess)
+                {
+                    await cacheService.SetCacheDataAsync(key, fomsDataResult.Data); //Сохраняем в КЭШ
+                }
+
+                return fomsDataResult;
+            }
+            catch (TimeoutException ex)
             {
-                return await localDataRepository.GetDataBySnilsAsync(personSnils);
+                //Если TimeOut, выполняем запрос в локальную базу
+                logger.LogInformation(ex, ex.Message);
+                return await localDataRepository.GetLocalDataAsync(personSnils);
             }
-
-            return fomsDataResult;
         }
     }
 }

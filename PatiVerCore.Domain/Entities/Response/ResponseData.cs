@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PatiVerCore.Domain.Entities.Response
 {
-    [System.Diagnostics.DebuggerStepThrough()]
-    [System.CodeDom.Compiler.GeneratedCode("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.Runtime.Serialization.DataContract(Name = "ResponseData", Namespace = "http://khfoms.ru/bdz")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "ResponseData", Namespace = "http://khfoms.ru/bdz")]
     public partial class ResponseData : object
     {
 
@@ -22,68 +22,68 @@ namespace PatiVerCore.Domain.Entities.Response
 
         private PolisData polisDataField;
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Result
         {
             get
             {
-                return ResultField;
+                return this.ResultField;
             }
             set
             {
-                ResultField = value;
+                this.ResultField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 1)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 1)]
         public string Message
         {
             get
             {
-                return MessageField;
+                return this.MessageField;
             }
             set
             {
-                MessageField = value;
+                this.MessageField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 2)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 2)]
         public PersonData personData
         {
             get
             {
-                return personDataField;
+                return this.personDataField;
             }
             set
             {
-                personDataField = value;
+                this.personDataField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 3)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 3)]
         public AttachmentData attachmentData
         {
             get
             {
-                return attachmentDataField;
+                return this.attachmentDataField;
             }
             set
             {
-                attachmentDataField = value;
+                this.attachmentDataField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 4)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 4)]
         public PolisData polisData
         {
             get
             {
-                return polisDataField;
+                return this.polisDataField;
             }
             set
             {
-                polisDataField = value;
+                this.polisDataField = value;
             }
         }
     }

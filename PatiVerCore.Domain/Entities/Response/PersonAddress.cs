@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PatiVerCore.Domain.Entities.Response
 {
-    [System.Diagnostics.DebuggerStepThrough()]
-    [System.CodeDom.Compiler.GeneratedCode("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.Runtime.Serialization.DataContract(Name = "PersonAddress", Namespace = "http://khfoms.ru/bdz")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "PersonAddress", Namespace = "http://khfoms.ru/bdz")]
     public partial class PersonAddress : object
     {
 
@@ -28,107 +28,107 @@ namespace PatiVerCore.Domain.Entities.Response
 
         private string FlatField;
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Address
         {
             get
             {
-                return AddressField;
+                return this.AddressField;
             }
             set
             {
-                AddressField = value;
+                this.AddressField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Region
         {
             get
             {
-                return RegionField;
+                return this.RegionField;
             }
             set
             {
-                RegionField = value;
+                this.RegionField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string SubRegion
         {
             get
             {
-                return SubRegionField;
+                return this.SubRegionField;
             }
             set
             {
-                SubRegionField = value;
+                this.SubRegionField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 3)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 3)]
         public string City
         {
             get
             {
-                return CityField;
+                return this.CityField;
             }
             set
             {
-                CityField = value;
+                this.CityField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 4)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 4)]
         public string Street
         {
             get
             {
-                return StreetField;
+                return this.StreetField;
             }
             set
             {
-                StreetField = value;
+                this.StreetField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 5)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 5)]
         public string House
         {
             get
             {
-                return HouseField;
+                return this.HouseField;
             }
             set
             {
-                HouseField = value;
+                this.HouseField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 6)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 6)]
         public string Corpus
         {
             get
             {
-                return CorpusField;
+                return this.CorpusField;
             }
             set
             {
-                CorpusField = value;
+                this.CorpusField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 7)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 7)]
         public string Flat
         {
             get
             {
-                return FlatField;
+                return this.FlatField;
             }
             set
             {
-                FlatField = value;
+                this.FlatField = value;
             }
         }
     }

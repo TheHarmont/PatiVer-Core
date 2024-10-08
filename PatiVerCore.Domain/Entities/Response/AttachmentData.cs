@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace PatiVerCore.Domain.Entities.Response
 {
-    [System.Diagnostics.DebuggerStepThrough()]
-    [System.CodeDom.Compiler.GeneratedCode("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.Runtime.Serialization.DataContract(Name = "AttachmentData", Namespace = "http://khfoms.ru/bdz")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
+    [System.Runtime.Serialization.DataContractAttribute(Name = "AttachmentData", Namespace = "http://khfoms.ru/bdz")]
     public partial class AttachmentData : object
     {
 
@@ -32,133 +32,133 @@ namespace PatiVerCore.Domain.Entities.Response
 
         private string DoctorSnilsField;
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string CodeMO
         {
             get
             {
-                return CodeMOField;
+                return this.CodeMOField;
             }
             set
             {
-                CodeMOField = value;
+                this.CodeMOField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Region
         {
             get
             {
-                return RegionField;
+                return this.RegionField;
             }
             set
             {
-                RegionField = value;
+                this.RegionField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string RegionName
         {
             get
             {
-                return RegionNameField;
+                return this.RegionNameField;
             }
             set
             {
-                RegionNameField = value;
+                this.RegionNameField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember()]
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string RegionType
         {
             get
             {
-                return RegionTypeField;
+                return this.RegionTypeField;
             }
             set
             {
-                RegionTypeField = value;
+                this.RegionTypeField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 4)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 4)]
         public string AttachType
         {
             get
             {
-                return AttachTypeField;
+                return this.AttachTypeField;
             }
             set
             {
-                AttachTypeField = value;
+                this.AttachTypeField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 5)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 5)]
         public string AttachBeginDate
         {
             get
             {
-                return AttachBeginDateField;
+                return this.AttachBeginDateField;
             }
             set
             {
-                AttachBeginDateField = value;
+                this.AttachBeginDateField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 6)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 6)]
         public string AttachEndDate
         {
             get
             {
-                return AttachEndDateField;
+                return this.AttachEndDateField;
             }
             set
             {
-                AttachEndDateField = value;
+                this.AttachEndDateField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 7)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 7)]
         public string AttachReason
         {
             get
             {
-                return AttachReasonField;
+                return this.AttachReasonField;
             }
             set
             {
-                AttachReasonField = value;
+                this.AttachReasonField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 8)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 8)]
         public string DetachReason
         {
             get
             {
-                return DetachReasonField;
+                return this.DetachReasonField;
             }
             set
             {
-                DetachReasonField = value;
+                this.DetachReasonField = value;
             }
         }
 
-        [System.Runtime.Serialization.DataMember(Order = 9)]
+        [System.Runtime.Serialization.DataMemberAttribute(Order = 9)]
         public string DoctorSnils
         {
             get
             {
-                return DoctorSnilsField;
+                return this.DoctorSnilsField;
             }
             set
             {
-                DoctorSnilsField = value;
+                this.DoctorSnilsField = value;
             }
         }
     }

@@ -2,16 +2,15 @@
 using Microsoft.Extensions.Logging;
 using PatiVerCore.Application.DTOs;
 using PatiVerCore.Application.Interfaces;
-using PatiVerCore.Domain.Common.Result;
+using PatiVerCore.Domain.Common;
 using System.Text.Json;
 
 namespace PatiVerCore.Infrastructure.Services
 {
-    public class CacheService(ILogger<CacheService> logger,IDistributedCache _distributedCache) : ICacheService
+    public class CacheService(ILogger<CacheService> logger,IDistributedCache distributedCache) : ICacheService
     {
         private const string GetSuccess = "Запись была найдена в КЭШ";
         private const string SetSuccess = "Запись была помещена в КЭШ";
-        private const string KeyIsNull = "Пустой идентификатор";
         private const string NotFound = "Не найдена запись в КЭШ";
         private const string InvalidDeserialize = "Не смогли извлечь запись из КЭШ";
         private const string Unexpected = "Произошла непредвиденная ошибка";
@@ -31,23 +30,17 @@ namespace PatiVerCore.Infrastructure.Services
                 IncludeFields = true  //Чтобы выполнялась сериализация полей, а не только свойств
             };
 
-    public async Task<Result<PersonResponse>> GetCacheDataAsync(string key)
+        public async Task<Result<PersonResponse>> GetCacheDataAsync(string key)
         {
             try
             {
-                if (string.IsNullOrEmpty(key))
-                {
-                    logger.LogInformation(KeyIsNull);
-                    return Result<PersonResponse>.Failure(ErrorType.Invalid);
-                }
-
                 //Получаем данные из кэш
-                var cacheJson = await _distributedCache.GetStringAsync(key);
+                var cacheJson = await distributedCache.GetStringAsync(key);
 
                 if (string.IsNullOrEmpty(cacheJson))
                 {
                     logger.LogInformation(NotFound);
-                    return Result<PersonResponse>.Failure(ErrorType.NotFound);
+                    return Result<PersonResponse>.Failure();
                 }
 
                 //Десериализуем строку в объект
@@ -56,7 +49,7 @@ namespace PatiVerCore.Infrastructure.Services
                 if (response is null)
                 {
                     logger.LogInformation(InvalidDeserialize);
-                    return Result<PersonResponse>.Failure(ErrorType.Invalid);
+                    return Result<PersonResponse>.Failure();
                 }
 
                 logger.LogInformation(GetSuccess);
@@ -65,7 +58,7 @@ namespace PatiVerCore.Infrastructure.Services
             catch (Exception ex)
             {
                 logger.LogInformation(ex, Unexpected);
-                return Result<PersonResponse>.Failure(ErrorType.Unexpected);
+                return Result<PersonResponse>.Failure();
             }
         }
 
@@ -76,7 +69,7 @@ namespace PatiVerCore.Infrastructure.Services
                 // сериализуем данные в строку в формате json
                 var responseString = JsonSerializer.Serialize(response, serializeOptions);
                 // сохраняем строковое представление объекта в формате json в кэш на 2 минуты
-                await _distributedCache.SetStringAsync(key, responseString, redisOptions);
+                await distributedCache.SetStringAsync(key, responseString, redisOptions);
 
                 logger.LogInformation(SetSuccess);
             }
